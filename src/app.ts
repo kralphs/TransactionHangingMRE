@@ -8,7 +8,7 @@ const port = 8080;
 app.get('/', (req, res, next) => {
     const handler = async () => {
         await Cluster.transactions().run(async (ctx) => {
-            const collection = Cluster.bucket('biosafety').scope('events').collection('events');
+            const collection = Cluster.bucket('test').scope('events').collection('events');
             ctx.insert(collection, 'Committee::5aae077f-4ef3-4df5-a848-b3b55870a936::1', {});
         }).catch(reason => {
             console.log(reason);
